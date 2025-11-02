@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bourbon & Breeze | Banjara Hills, Hyderabad (Mobile View)</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts: Playfair Display (Serif for elegance) and Inter (Sans-serif for readability) --><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for the Dark Green & Sage Premium Theme */
+        :root {
+            --color-dark-green: #1A2421; /* Deep Forest Green/Near Black */
+            --color-sage: #8FA69B; /* Muted Sage Green - Primary Accent */
+            --color-cream: #F2F4F3; /* Soft Off-White - Main Text Color */
+            --color-subtle-green: #3D4744; /* Darker Olive/Subtle Background */
+            --color-red: #A33C3C; /* Subtle Non-Veg Indicator */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-dark-green);
+            color: var(--color-cream);
+            line-height: 1.6; /* Improved mobile readability */
+        }
+        .header-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .text-sage {
+            color: var(--color-sage);
+        }
+        .bg-sage-accent {
+            background-color: var(--color-sage);
+        }
+        .bg-dark-section {
+            background-color: var(--color-subtle-green);
+        }
+        .menu-item-line {
+            border-bottom: 1px solid var(--color-subtle-green);
+        }
+        .hero-bg {
+            /* NEW: Dynamic background image for the hero section */
+            background-image: url('https://image.mux.com/E8h6qB700iLw5v01rMkW1h52B2Vv02C901/thumbnail.webp?time=2'); /* Example: A sophisticated lounge interior */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect for depth */
+            position: relative; /* Needed for overlay */
+            z-index: 1; /* Ensure text is above */
+        }
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+            z-index: -1; /* Behind content but above background image */
+        }
+        .section-separator {
+            width: 150px;
+            height: 2px;
+            background-color: var(--color-sage);
+        }
+        .h-screen-mobile {
+            height: 80vh;
+        }
+        @media (min-width: 768px) {
+            .h-screen-mobile {
+                height: 100vh;
+            }
+        }
+
+        /* Marker for Veg/Non-Veg */
+        .veg-marker { color: var(--color-sage); }
+        .nonveg-marker { color: var(--color-red); }
+
+        /* Custom animation for filter buttons */
+        .filter-button {
+            transition: all 0.3s ease;
+        }
+        .filter-button.active {
+            background-color: var(--color-sage);
+            color: var(--color-dark-green);
+            border-color: var(--color-sage);
+        }
+
+        /* Styling for Pizza/Size options */
+        .size-option-label {
+            display: inline-block;
+            padding: 4px 8px;
+            border: 1px solid var(--color-subtle-green);
+            border-radius: 4px;
+            color: var(--color-sage);
+            font-weight: 500;
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+        .size-option-price {
+            color: var(--color-cream);
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        .menu-item {
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-subtle-green);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar --><nav class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-blur-sm shadow-xl border-b border-[#3D4744]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="header-font text-xl font-bold text-sage tracking-widest">
+                        B&B
+                    </a>
+                </div>
+                <div class="flex space-x-4 text-xs">
+                    <a href="#menu" class="font-medium text-gray-300 hover:text-sage transition duration-300">Menu</a>
+                    <a href="#nightlife" class="font-medium text-gray-300 hover:text-sage transition duration-300">Vibe</a>
+                    <a href="#contact" class="font-medium text-sage border-b-2 border-sage pb-1">Book</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section --><header class="hero-bg h-screen-mobile flex items-center justify-center text-center pt-16">
+        <div class="relative z-10 bg-black bg-opacity-60 p-6 sm:p-10 rounded-lg max-w-sm md:max-w-4xl mx-4">
+            <h1 class="header-font text-4xl sm:text-5xl font-bold text-sage leading-tight mb-2 tracking-wider">
+                The Refined Night.
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-200 mb-6 font-light">
+                Urban Chic Meets Rustic Warmth in the Heart of Banjara Hills.
+            </p>
+            <a href="#reservations" class="inline-block bg-sage-accent text-gray-900 header-font font-bold py-3 px-8 rounded-full text-md uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-2xl">
+                Book Your Table
+            </a>
+            <p class="text-xs text-gray-400 mt-3">
+                Hyderabad's Premier Rooftop Bar & Kitchen
+            </p>
+        </div>
+    </header>
+
+    <!-- 2. About/Atmosphere Section --><section class="py-16 bg-dark-section">
+        <div class="max-w-xl mx-auto px-4 text-center">
+            <div class="flex justify-center mb-6">
+                <div class="section-separator"></div>
+            </div>
+            <h2 class="header-font text-3xl font-bold mb-4 text-sage">TRUE TASTE OF HYDERABAD NIGHTLIFE</h2>
+            <p class="text-gray-300 text-base leading-relaxed">
+                Nestled on Road No. 14, Bourbon & Breeze elevates the lounge experience. Crafted with dark woods, exposed brick, and rich leather—a perfect backdrop for premium cocktails, reflecting the exclusive energy of Banjara Hills after sundown.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. Premium Menu Section with Interactive Filters --><section id="menu" class="py-20 bg-dark-green">
+        <div class="max-w-xl mx-auto px-4">
+            <h2 class="header-font text-4xl text-center font-bold mb-4 text-sage tracking-wider">The Cellar & Kitchen</h2>
+            <p class="text-center text-gray-400 mb-8 text-md">Curated selections with world-class ingredients. Prices in INR.</p>
+
+            <!-- VEG / NON-VEG FILTER BUTTONS --><div class="flex justify-center space-x-4 mb-12">
+                <button id="filter-veg" class="filter-button px-6 py-2 rounded-full font-semibold border border-sage text-sm transition-all duration-300">
+                    Vegetarian
+                </button>
+                <button id="filter-nonveg" class="filter-button px-6 py-2 rounded-full font-semibold border border-sage text-sm transition-all duration-300">
+                    Non-Vegetarian
+                </button>
+            </div>
+
+            <div class="space-y-12">
+
+                <!-- MAIN MENU CATEGORIES --><!-- SALADS --><div class="border-b-2 border-sage pb-4">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">ELITE SALADS</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Gado Gado Nusantara Salad (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹890</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Refreshing and flavourful Indonesian salad with seasonal vegetables, tempeh, and rich peanut dressing.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> House-Made Caesar Salad (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹790</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crisp romaine lettuce, house-baked croutons, aged Parmesan, and signature Caesar emulsion.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> American Corn Salad (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹690</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Sweet boiled corn kernels tossed with onion, tomato, bell pepper, lime, and desi chilli seasoning.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Garden Green Salad (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹490</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">A simple, crisp mix of cucumber, carrot, and tomato, lightly seasoned with salt and pepper.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Gado Gado Nusantara Salad (Non-Veg)</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Indonesian classic, served with choice of **Chicken (₹990)** or premium **Seafood (₹1090)** addition.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> House-Made Caesar Salad (Non-Veg)</h4>
+                                <span class="text-lg font-bold text-sage">₹1190</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Classic preparation, elevated with choice of **Grilled Chicken (₹1050)** or fresh **Seafood (₹1190)**.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Grilled Chicken Jalapeño Salad</h4>
+                                <span class="text-lg font-bold text-sage">₹1050</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Marinated grilled chicken with iceberg lettuce, fire-roasted jalapeños, and lemon pepper dressing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TANDOOR SE & GRILLED --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">TANDOOR SE & SKEWERED</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Murgh Lasuni Tikka</h4>
+                                <span class="text-lg font-bold text-sage">₹990</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Overnight marinated, roasted garlic-flavored chicken cooked to perfection in a charcoal oven.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Tandoori Murgh (Half/Full)</h4>
+                                <span class="text-lg font-bold text-sage">₹1490</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Classic chicken marinated in spiced yogurt, cooked in a tandoor. **Half: ₹1090 | Full: ₹1490**</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Achari Fish Tikka</h4>
+                                <span class="text-lg font-bold text-sage">₹1290</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Hung curd and authentic pickle-marinated basa fish cooked in a charcoal oven.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Vietnamese Grilled Prawns</h4>
+                                <span class="text-lg font-bold text-sage">₹1390</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Jumbo prawns marinated in a light, fragrant Vietnamese herb and lime marinade, grilled.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Shish Taouk Skewered</h4>
+                                <span class="text-lg font-bold text-sage">₹990</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Popular Lebanese grilled chicken skewer, tender and juicy, marinated in rich yogurt, lemon, and garlic.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Paneer Tikka (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹890</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Yogurt marinated cottage cheese cooked in the tandoor, served with mint chutney.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Heaven On Earth (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹850</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Spicy marinated mushrooms cooked on the grill, a vegetarian delight.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Hariyali Paneer Tikka (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹890</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Cottage cheese marinated with coriander, green chili, and aromatic herbs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ASIAN & DESI SMALL PLATES --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">ASIAN & DESI SMALL PLATES</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Ghee Roasted Mutton</h4>
+                                <span class="text-lg font-bold text-sage">₹1490</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Tender mutton slow-roasted in clarified ghee, black pepper, and fragrant curry leaves (A house specialty).</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Butter Garlic Prawns</h4>
+                                <span class="text-lg font-bold text-sage">₹1390</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Jumbo prawns sautéed in a rich, buttery, and garlicky reduction. The name says it all.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Kung Pao Chicken</h4>
+                                <span class="text-lg font-bold text-sage">₹990</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crispy fried chicken tossed in a sweet and spicy sauce, topped with toasted cashews.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Spicy Fried Chicken Wings</h4>
+                                <span class="text-lg font-bold text-sage">₹950</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crispy fried chicken wings tossed in a sour, spicy, and sticky sauce.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chili Eggs</h4>
+                                <span class="text-lg font-bold text-sage">₹850</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crispy fried eggs tossed with chili, garlic, and authentic soy sauce.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Honey Glazed Spicy Lotus Stem (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹850</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crispy fried lotus stems tossed with spicy honey and sriracha sauce.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Chilli Paneer (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹850</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crispy paneer cubes tossed in a fiery, classic chili and soy sauce blend.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Salt And Pepper Water Chestnuts (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹790</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Fried water chestnuts seasoned with black pepper and fresh celery.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Roasted Peanuts Masala (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹590</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Crunchy roasted peanuts tossed with finely diced onion, tomato, and tangy Indian spices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUSHI BAR --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">SUSHI BAR | ARTISANAL ROLLS</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Queen of Salmon Maki</h4>
+                                <span class="text-lg font-bold text-sage">₹1490</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Roll with crab, avocado, topped with salmon, cream cheese, teriyaki dressing, and salmon roe.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Dynamite Roll</h4>
+                                <span class="text-lg font-bold text-sage">₹1450</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Ebi tempura, cream cheese, and prime salmon, drizzled with spicy mayo.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Crunchy Crab Steak Sushi</h4>
+                                <span class="text-lg font-bold text-sage">₹1390</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Tempura fried crab stick roll with red rice and a smoky flavor profile.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Cheese Avocado Roll (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Cream cheese roll topped with fresh avocado salsa and toasted sesame.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Yasai Tempura Uramaki (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹990</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Assorted vegetable tempura roll with panko crust for extra crunch.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIZZERIA --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">ARTISANAL PIZZAS</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Bolognese Pizza</h4>
+                                <span class="text-lg font-bold text-sage">₹1150</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Minced chicken, fresh mozzarella, and Parmesan cheese over house-made San Marzano tomato sauce. <span class="size-option-label">9 Inch: ₹950</span> <span class="size-option-label">12 Inch: ₹1150</span></p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Pesto Pizza</h4>
+                                <span class="text-lg font-bold text-sage">₹1150</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Pesto-marinated chicken with cream cheese, olives, and mozzarella. <span class="size-option-label">9 Inch: ₹950</span> <span class="size-option-label">12 Inch: ₹1150</span></p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Tikka Pizza</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Tandoori chicken tikka topped with mozzarella cheese and a hint of mint. <span class="size-option-label">9 Inch: ₹890</span> <span class="size-option-label">12 Inch: ₹1090</span></p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Pesto Veg Pizza (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Basil pesto, cream cheese, grilled vegetables, corn, and mozzarella cheese. <span class="size-option-label">9 Inch: ₹890</span> <span class="size-option-label">12 Inch: ₹1090</span></p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Paneer Tikka Pizza (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Tandoori paneer tikka with mozzarella cheese and caramelized onions. <span class="size-option-label">9 Inch: ₹890</span> <span class="size-option-label">12 Inch: ₹1090</span></p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Green Garden Pizza (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹990</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Broccoli, zucchini, bell pepper, and sweet corn with cheese. <span class="size-option-label">9 Inch: ₹790</span> <span class="size-option-label">12 Inch: ₹990</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASTA BAR --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">PASTA BAR</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Seafood Pesto Penne</h4>
+                                <span class="text-lg font-bold text-sage">₹1290</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Penne tossed in basil pesto, olive oil, garlic, and parmesan, finished with seasonal **Seafood**.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Spaghetti Aglio Olio</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Spaghetti tossed with garlic, olive oil, chili flakes, oregano, and parmesan, with grilled **Chicken**.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Penne Alfredo</h4>
+                                <span class="text-lg font-bold text-sage">₹1050</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Penne pasta in a rich, velvety creamy white sauce with prime **Chicken** additions.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Penne Arabiata (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹890</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Penne pasta tossed in a bold, spicy Italian tomato sauce with basil and chili.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Spaghetti Aglio Olio (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹890</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Spaghetti tossed with garlic, cold-pressed olive oil, chili flakes, and oregano.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Penne Mix Sauce (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹890</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Penne cooked in a creamy tomato sauce with Parmesan cheese.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WESTERN & MAINS --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">PREMIUM MAINS</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Grilled Fillet of Basa</h4>
+                                <span class="text-lg font-bold text-sage">₹1290</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Grilled basa served with our signature lemon butter sauce, herb rice, and seasonal vegetables.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Chicken Pepper Steak</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Marinated grilled chicken served with aromatic herb rice and sautéed seasonal vegetables.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Grilled Chicken with Red Wine Sauce</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Chicken breast cooked in a rich red wine reduction, served with creamy mashed potatoes.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="nonveg-marker mr-2">•</span> Murgh Makhani - Supreme</h4>
+                                <span class="text-lg font-bold text-sage">₹1050</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Charcoal-roasted chicken cooked in a creamy cashew and tomato gravy (The ultimate Indian butter chicken).</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Cottage Cheese Steak (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Seared cottage cheese patty served with rich mushroom gravy and herb-roasted vegetables.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Paneer Butter Masala (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹990</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Cottage cheese cooked in a creamy and buttery tomato-based gravy, a rich classic.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Stroganoff (Veg)</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Sautéed garlic, exotic mushrooms, and bell peppers in a rich, sour sesame sauce.</p>
+                        </div>
+                        <div class="menu-item veg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream flex items-center"><span class="veg-marker mr-2">•</span> Sabzi Makhani (V)</h4>
+                                <span class="text-lg font-bold text-sage">₹950</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Mixed seasonal vegetables cooked in a creamy, mild cashew gravy.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- B&B SIGNATURE COCKTAILS (DRINKS) - Always Visible --><div class="border-b-2 border-sage pb-4 pt-8">
+                    <h3 class="header-font text-2xl font-semibold mb-6 text-cream tracking-wide">B&B SIGNATURE COCKTAILS</h3>
+                    <div class="grid gap-y-8">
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream">Bourbon & Breeze</h4>
+                                <span class="text-lg font-bold text-sage">₹1150</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Jim Beam, house-made pineapple cordial, exotic spice syrup. Our namesake creation.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream">Nightqueen</h4>
+                                <span class="text-lg font-bold text-sage">₹1150</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Gin jasmine infused, sweet & sour mix, served with chamomile tea reduction.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream">Agave Rose Tea</h4>
+                                <span class="text-lg font-bold text-sage">₹1150</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Tequila mixed with rose tea, lime juice, yuzu puree, and elderflower syrup for a floral kick.</p>
+                        </div>
+                        <div class="menu-item nonveg">
+                            <div class="flex justify-between items-end mb-1">
+                                <h4 class="text-lg font-medium text-cream">Vodka Espresso</h4>
+                                <span class="text-lg font-bold text-sage">₹1090</span>
+                            </div>
+                            <p class="text-sm text-gray-400 italic">Premium vodka, rich coffee liqueur, dark chocolate syrup, and a dash of spice.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Nightlife & Events Section --><section id="nightlife" class="bg-dark-section py-16">
+        <div class="max-w-xl mx-auto px-4 flex flex-col items-center">
+            <!-- Image Placeholder (Top on Mobile) --><div class="w-full mb-8">
+                <img src="https://placehold.co/800x450/1A2421/8FA69B?text=Live+Vibe+of+Banjara+Hills" 
+                     alt="Live Music and DJ Set at Bourbon and Breeze" 
+                     class="w-full h-auto object-cover rounded-lg shadow-2xl border-2 border-sage opacity-80"/>
+            </div>
+            <!-- Text Content (Bottom on Mobile) --><div class="text-center">
+                <p class="text-sage text-sm uppercase tracking-widest mb-2">The Vibe of Banjara</p>
+                <h2 class="header-font text-4xl font-bold text-cream mb-4">HYDERABAD AFTER DARK</h2>
+                <p class="text-gray-300 text-base mb-6">
+                    As the sun sets, Bourbon & Breeze transforms into a pulse point of sophistication. We feature **live acoustic music** every weekend and host curated **DJ sets**—where Hyderabad's elite unwind.
+                </p>
+                <a href="#reservations" class="inline-block bg-sage-accent text-gray-900 font-semibold py-3 px-8 rounded-lg hover:bg-opacity-90 transition duration-300">
+                    See Event Schedule
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Location & Contact Section --><section id="contact" class="py-20 bg-dark-green">
+        <div class="max-w-xl mx-auto px-4">
+            <h2 class="header-font text-4xl text-center font-bold mb-10 text-sage tracking-wider">Visit Us</h2>
+            
+            <div class="flex flex-col gap-8">
+                <!-- Contact Details (Full Width on Mobile) --><div class="p-6 bg-dark-section rounded-lg shadow-2xl">
+                    <h3 class="header-font text-2xl font-semibold mb-4 text-cream">Location & Hours</h3>
+                    <p class="text-gray-300 mb-4">
+                        <span class="font-bold block text-sage mb-1">Address:</span>
+                        8-2, 293/174, 3rd Floor, Road No.14, <br>
+                        B.N. Reddy Colony / Banjara Hills, Hyderabad
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        <span class="font-bold block text-sage mb-1">Reservations:</span>
+                        <a href="tel:+918008510303" class="hover:text-sage transition duration-300">+91 80085 10303</a>
+                    </p>
+                    <p class="text-gray-300">
+                        <span class="font-bold block text-sage mb-1">Open Daily:</span>
+                        12:00 PM – 11:30 PM
+                    </p>
+                </div>
+
+                <!-- Google Map Placeholder (Full Width on Mobile) --><div class="w-full">
+                    <h3 class="header-font text-2xl font-semibold mb-4 text-cream">Our Location</h3>
+                    <!-- Map embed that centers on the Banjara Hills area --><iframe 
+                        width="100%" 
+                        height="300" 
+                        loading="lazy" 
+                        allowfullscreen 
+                        referrerpolicy="no-referrer-when-downgrade" 
+                        src="https://maps.google.com/maps?q=Bourbon%20%26%20Breeze%20Banjara%20Hills%20Hyderabad&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        class="rounded-lg shadow-xl border-2 border-sage"
+                        ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer --><footer class="bg-black py-6 border-t border-[#3D4744] text-center">
+        <div class="max-w-xl mx-auto px-4">
+            <p class="text-gray-500 text-xs">
+                &copy; 2025 Bourbon & Breeze, Banjara Hills. All Rights Reserved.
+            </p>
+            <div class="flex justify-center mt-3 space-x-4">
+                <a href="#" class="text-gray-400 hover:text-sage transition duration-300 text-xs">Privacy</a>
+                <span class="text-gray-500 text-xs">|</span>
+                <a href="#" class="text-gray-400 hover:text-sage transition duration-300 text-xs">Careers</a>
+            </div>
+        </div>
+    </footer
+    <!-- JavaScript for Menu Filtering --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const vegButton = document.getElementById('filter-veg');
+            const nonvegButton = document.getElementById('filter-nonveg');
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            // Default filter state
+            let currentFilter = 'veg'; 
+
+            function filterMenu(preference) {
+                currentFilter = preference;
+                
+                // Update button styles
+                vegButton.classList.remove('active');
+                nonvegButton.classList.remove('active');
+                
+                if (preference === 'veg') {
+                    vegButton.classList.add('active');
+                } else if (preference === 'nonveg') {
+                    nonvegButton.classList.add('active');
+                }
+
+                // Show/hide items
+                menuItems.forEach(item => {
+                    const isVeg = item.classList.contains('veg');
+                    const isNonVeg = item.classList.contains('nonveg');
+
+                    let shouldShow = false;
+
+                    // Determine if the item should be shown based on its type and the current filter
+                    if (preference === 'veg' && isVeg) {
+                        shouldShow = true;
+                    } else if (preference === 'nonveg' && isNonVeg) {
+                        shouldShow = true;
+                    }
+
+                    // For dynamic menu blocks (like sushi, tandoor), we need to ensure the parent div is not empty
+                    // but since all items are top-level .menu-item here, simple display: none is fine.
+                    item.style.display = shouldShow ? 'block' : 'none';
+                });
+            }
+
+            vegButton.addEventListener('click', () => filterMenu('veg'));
+            nonvegButton.addEventListener('click', () => filterMenu('nonveg'));
+
+            // Initialize to show Non-Veg by default, as lounges often lead with Non-Veg offerings
+            // Switching to Non-Veg default to match the Vibe
+            filterMenu('nonveg');
+        });
+    </script>
+</body>
+</html>
